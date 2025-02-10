@@ -1,0 +1,43 @@
+import category from '../../asset/category.png'
+export const categories=[
+    {
+        _id:'1',
+        name:'Mens',
+        image:category
+    },
+    {
+        _id:'2',
+        name:'Kids',
+        image:category
+    },
+    {
+        _id:'3',
+        name:'Ladies',
+        image:category
+    },
+    {
+        _id:'4',
+        name:'Kurta',
+        image:category
+    },
+    {
+        _id:'5',
+        name:'Trousers',
+        image:category
+    },
+    {
+        _id:'6',
+        name:'Denim',
+        image:category
+    },
+    {
+        _id:'7',
+        name:'Bottomwears',
+        image:category
+    },
+    {
+        _id:'8',
+        name:'T shirt',
+        image:category
+    },
+]
