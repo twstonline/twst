@@ -19,14 +19,20 @@ import Wishlist from "./page/Wishlist";
 import Checkout from "./page/Checkout";
 import ScrollToTop from "./ScrollToTop";
 
+import CancellationRefunds from "./component/policies/CancellationRefunds";
+import PrivacyPolicy from "./component/policies/PrivacyPolicy";
+import ReturnPolicy from "./component/policies/ReturnPolicy";
+import StorePolicy from "./component/policies/StorePolicy";
+import TermsOfService from "./component/policies/TermsOfServicce";
+
 
 const App = () => {
   return (
-    
+
     <Router>
       <ScrollToTop />
       <Routes>
-      
+
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="login" element={<Login />} />
@@ -38,6 +44,12 @@ const App = () => {
           <Route path="wishlist" element={<Wishlist />} />
           <Route path="details/:id" element={<ProductDetails />} />
           <Route path="profile" element={<Profile />} />
+
+          <Route path="/privacypolicy" element={<PrivacyPolicy />} />
+          <Route path="/cancellation" element={<CancellationRefunds />} />
+          <Route path="/returnpolicy" element={<ReturnPolicy />} />
+          <Route path="/storepolicy" element={<StorePolicy />} />
+          <Route path="/termsofservice" element={<TermsOfService />} />
         </Route>
 
         <Route path="/profile" element={<UserLayout />}>
