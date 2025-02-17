@@ -50,11 +50,11 @@ const MobilNav = () => {
   }, [dispatch]);
 
   const handleCart = () => {
-    dispatch(openMobileNav())
     if (!userData) {
       setOpenModal(true)
     } else {
       try {
+        dispatch(openMobileNav())
         navigate('/cart')
 
       } catch (error) {
@@ -63,11 +63,11 @@ const MobilNav = () => {
     }
   }
   const handleWishlist = () => {
-    dispatch(openMobileNav())
     if (!userData) {
       setOpenModal(true)
     } else {
       try {
+        dispatch(openMobileNav())
         navigate('/wishlist')
 
       } catch (error) {
