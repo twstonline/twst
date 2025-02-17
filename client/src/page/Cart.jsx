@@ -38,8 +38,9 @@ import CartList from "../component/cart/CartList";
 import Summary from "../component/cart/Summary";
 import { useDispatch, useSelector } from "react-redux";
 import { setUserDetails } from "../redux/actions/userActions";
-
+import { useNavigate } from "react-router-dom";
 const Cart = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const userData = useSelector((state) => state.userDetails);
   const storeDataCart = useSelector((state) => state?.storeDetails?.cart);
@@ -195,17 +196,35 @@ const Cart = () => {
   };
 
   return (
-    <div className="w-full flex flex-col lg:flex-row gap-0 lg:gap-3">
-      <div className="w-full lg:w-2/3 p-6 shadow-md rounded-lg h-96 overflow-scroll productPhoto">
-        <h2 className="text-xl lg:text-2xl font-bold mb-6">Your Bag</h2>
-        <CartList cartData={cartData} onQuantityChange={handleQuantityChange} onRemoveItem={handleRemoveItem} />
-      </div>
-      <Summary
-        salePriceTotal={salePriceTotal}
-        deliveryCharge={deliveryCharge}
-        proPriceTotal={proPriceTotal}
-        lastTotal={(salePriceTotal > 500  ? salePriceTotal : salePriceTotal + deliveryCharge).toFixed(2)}
-      />
+    <div className="w-full flex flex-col lg:flex-row gap-0 lg:gap-3 p-4" style={{ display: 'flex', justifyContent: 'center' }}>
+      {cartData?.length === 0 ? (
+        <div style={{ display: 'flex', justifyContent: 'center' }}>
+          <div>
+            <p className="text-xs sm:text-sm text-gray-600 mt-8">
+              Your cart is empty.
+            </p>
+            <button
+              className="bg-gray-200 px-3 py-2 sm:px-4 sm:py-2 rounded text-xs sm:text-sm mt-2"
+              onClick={() => navigate("/shop")}
+            >
+              <i className="fas fa-plus me-2"></i>Add Items
+            </button>
+          </div>
+        </div>
+      ) : (
+        <>
+          <div className="w-full lg:w-2/3 p-6 shadow-md rounded-lg h-96 overflow-scroll productPhoto">
+            <h2 className="text-xl lg:text-2xl font-bold mb-6">Your Bag</h2>
+            <CartList cartData={cartData} onQuantityChange={handleQuantityChange} onRemoveItem={handleRemoveItem} />
+          </div>
+          <Summary
+            salePriceTotal={salePriceTotal}
+            deliveryCharge={deliveryCharge}
+            proPriceTotal={proPriceTotal}
+            lastTotal={(salePriceTotal > 500 ? salePriceTotal : salePriceTotal + deliveryCharge).toFixed(2)}
+          />
+        </>
+      )}
     </div>
   );
 };

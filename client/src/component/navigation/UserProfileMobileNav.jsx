@@ -7,9 +7,19 @@ import { PiAddressBook } from "react-icons/pi";
 import { RxAvatar } from "react-icons/rx";
 import { CiLogout } from "react-icons/ci";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { clearUserDetails } from "../../redux/actions/userActions";
+import { useNavigate } from "react-router-dom";
 
 export function UserProfileMobileNav() {
   const [isOpen, setIsOpen] = useState(true);
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+  const logoutUser = () => {
+    dispatch(clearUserDetails());
+    localStorage.removeItem('Tokens');
+    navigate('/');
+  };
 
   const handleClose = () => setIsOpen(false);
 
@@ -34,7 +44,7 @@ export function UserProfileMobileNav() {
         <Drawer.Items className="p-4">
           <div className="grid grid-cols-3 gap-4 p-4 lg:grid-cols-4">
             <Link to="/profile/dashboard">
-              <div className="cursor-pointer rounded-lg bg-gray-50 p-4 hover:bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600">
+              <div className="cursor-pointer rounded-lg bg-gray-50 p-4 hover:bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600" onClick={() => setIsOpen(!isOpen)}>
                 <div className="mx-auto mb-2 flex h-[48px] max-h-[48px] w-[48px] max-w-[48px] items-center justify-center rounded-full bg-gray-200 p-2 dark:bg-gray-600">
                   <MdOutlineDashboard />
                 </div>
@@ -44,7 +54,7 @@ export function UserProfileMobileNav() {
               </div>
             </Link>
             <Link to="/profile/orders">
-              <div className="cursor-pointer rounded-lg bg-gray-50 p-4 hover:bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600">
+              <div className="cursor-pointer rounded-lg bg-gray-50 p-4 hover:bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600" onClick={() => setIsOpen(!isOpen)}>
                 <div className="mx-auto mb-2 flex h-[48px] max-h-[48px] w-[48px] max-w-[48px] items-center justify-center rounded-full bg-gray-200 p-2 dark:bg-gray-600">
                   <BsFillFileEarmarkCheckFill />
                 </div>
@@ -54,7 +64,7 @@ export function UserProfileMobileNav() {
               </div>
             </Link>
             <Link to="/profile/address">
-              <div className=" cursor-pointer rounded-lg bg-gray-50 p-4 hover:bg-gray-100 lg:block dark:bg-gray-700 dark:hover:bg-gray-600">
+              <div className=" cursor-pointer rounded-lg bg-gray-50 p-4 hover:bg-gray-100 lg:block dark:bg-gray-700 dark:hover:bg-gray-600" onClick={() => setIsOpen(!isOpen)}>
                 <div className="mx-auto mb-2 flex h-[48px] max-h-[48px] w-[48px] max-w-[48px] items-center justify-center rounded-full bg-gray-200 p-2 dark:bg-gray-600">
                   <PiAddressBook />
                 </div>
@@ -64,7 +74,7 @@ export function UserProfileMobileNav() {
               </div>
             </Link>
             <Link to="/profile/user_profile">
-              <div className="cursor-pointer rounded-lg bg-gray-50 p-4 hover:bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600">
+              <div className="cursor-pointer rounded-lg bg-gray-50 p-4 hover:bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600" onClick={() => setIsOpen(!isOpen)}>
                 <div className="mx-auto mb-2 flex h-[48px] max-h-[48px] w-[48px] max-w-[48px] items-center justify-center rounded-full bg-gray-200 p-2 dark:bg-gray-600">
                   <RxAvatar />
                 </div>
@@ -73,7 +83,7 @@ export function UserProfileMobileNav() {
                 </div>
               </div>
             </Link>
-            <div className="cursor-pointer rounded-lg bg-gray-50 p-4 hover:bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600">
+            <div className="cursor-pointer rounded-lg bg-gray-50 p-4 hover:bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600" onClick={logoutUser}>
               <div className="mx-auto mb-2 flex h-[48px] max-h-[48px] w-[48px] max-w-[48px] items-center justify-center rounded-full bg-gray-200 p-2 dark:bg-gray-600">
                 <CiLogout />
               </div>

@@ -316,7 +316,7 @@ const Login = ({ openModal, setOpenModal }) => {
             dispatch(setUserDetails(response.data.data));
             toast.success("Login successful!");
             setOpenModal(false);
-            window.location.reload();
+            // window.location.reload();
         } catch (error) {
             console.error(error);
             toast.error("Invalid OTP. Please try again.");
