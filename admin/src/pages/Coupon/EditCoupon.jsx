@@ -39,11 +39,11 @@ const EditCoupon = () => {
    const handleSubmit = () => {      
       try {
          const formData = new FormData();
-         // for (const key in details ) {
-         //    if (details.hasOwnProperty(key) && key !== "categorys" && key !== "products") {
-         //       formData.append(key, details[key]);
-         //    }
-         // }
+         for (const key in details ) {
+            if (details.hasOwnProperty(key) && key !== "categorys" && key !== "products") {
+               formData.append(key, details[key]);
+            }
+         }
          // let uniqueCategories;
          // if (category) {
          //    uniqueCategories = category
