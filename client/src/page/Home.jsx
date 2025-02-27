@@ -6,7 +6,6 @@ import fashion from "../asset/fashion.png";
 import { useNavigate } from 'react-router-dom';
 import TestimonialSlider from "../component/testimonials/testimonials";
 
-
 const Home = () => {
   const navigate = useNavigate();
 
@@ -15,20 +14,17 @@ const Home = () => {
   };
   return (
     <div className="w-full">
-      <ImageSlider />
+      <ImageSlider className="relative z-0" />
       <div className="sm:px-6">
         <div className="flex justify-center mt-20">
           <div className="w-full lg:w-1/2 text-center">
             <h1 className="text-center mb-10">
               WELCOME TO <span className="text-textColor">TWST</span>
             </h1>
-            <h2 className="text-center md:text-2xl font-light tracking-widest">
-              Discover consciously curated high-quality fashion, crafted to stand
-              the test of time. Don't miss our biggest sale ever—featuring over
-              1200 timeless styles at up to{" "}
-              <span className="text-textColor"> 40% off</span>
+            <h2 className="text-center md:text-2xl font-light tracking-wider font-sans">
+              For those who <span className="text-yellow-500">dare to be different</span>. TWST is a clothing brand crafted for <span className="text-yellow-500">bold individuals</span> who embrace their unique style. We blend <span className="text-yellow-500">contemporary designs</span> with premium quality to create pieces that stand out. Our fashion is <span className="text-yellow-500">unapologetically original</span>, effortlessly stylish, and always authentic.
             </h2>
-            <button className="px-10 py-3 border-solid border-2 border-zinc-500 text-sm mx-auto mt-8" onClick={handleClick}>
+            <button className="px-10 py-3 border-solid border-2 border-zinc-500 text-sm mx-auto mt-8 hover:bg-amber-600 hover:text-white hover:border-amber-600 transition-colors duration-300" onClick={handleClick}>
               SHOP NOW
             </button>
           </div>
@@ -44,7 +40,6 @@ const Home = () => {
         <div className="relative h-full mb-5">
           <TestimonialSlider />
         </div>
-
 
         <div className="relative h-full mb-5">
           <img src={fashion} alt="" className="w-full object-cover" />

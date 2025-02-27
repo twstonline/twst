@@ -12,17 +12,17 @@ const Accordion = ({ items }) => {
   return (
     <>
       <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-6 text-sm text-center">
-        <div className="flex flex-col items-center justify-center p-4 border rounded-lg hover:shadow-md transition-shadow duration-300">
+        <div className="flex flex-col items-center justify-center p-4 border hover:shadow-md transition-shadow duration-300">
           <MdOutline360 size={32} className="text-red-500" />
-          <p className="mt-2 font-medium">60 Day Returns</p>
+          <p className="mt-2 font-medium">17 Day Returns</p>
         </div>
 
-        <div className="flex flex-col items-center justify-center p-4 border rounded-lg hover:shadow-md transition-shadow duration-300">
+        <div className="flex flex-col items-center justify-center p-4 border hover:shadow-md transition-shadow duration-300">
           <CiDeliveryTruck size={32} className="text-blue-500" />
           <p className="mt-2 font-medium">Free Delivery</p>
         </div>
 
-        <div className="flex flex-col items-center justify-center p-4 border rounded-lg hover:shadow-md transition-shadow duration-300">
+        <div className="flex flex-col items-center justify-center p-4 border hover:shadow-md transition-shadow duration-300">
           <FaHandHoldingDollar size={32} className="text-green-500" />
           <p className="mt-2 font-medium">COD Available</p>
         </div>
@@ -112,15 +112,15 @@ const Accordion = ({ items }) => {
             </div>
           </div>}
       </div>
-      {/* <div className="mt-8 bg-gray-200 p-4 rounded-md">
+      {/* <div className="mt-8 bg-gray-200 p-4">
         <p className="text-sm font-medium">CHECK DELIVERY</p>
         <div className="flex mt-2">
           <input
             type="text"
             placeholder="Enter Pin Code"
-            className="border p-2 w-full rounded-l-md focus:outline-none"
+            className="border p-2 w-full focus:outline-none"
           />
-          <button className="bg-black text-white px-4 rounded-r-md">
+          <button className="bg-black text-white px-4">
             CHECK
           </button>
         </div>

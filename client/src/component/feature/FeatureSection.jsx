@@ -9,7 +9,7 @@ const FeaturesSection = () => {
         <div className="flex flex-col items-center text-center space-y-2">
           <FaShippingFast className="text-textColor text-3xl" />
           <h3 className="text-lg font-semibold text-gray-800">Free Shipping</h3>
-          <p className="text-sm text-gray-500">Free shipping on all US orders over $200</p>
+          <p className="text-sm text-gray-500">Free shipping on all orders over 200</p>
         </div>
 
        
@@ -19,7 +19,7 @@ const FeaturesSection = () => {
         <div className="flex flex-col items-center text-center space-y-2">
           <FaShieldAlt className="text-textColor text-3xl" />
           <h3 className="text-lg font-semibold text-gray-800">Payment Secure</h3>
-          <p className="text-sm text-gray-500">We ensure secure payment with PEV</p>
+          <p className="text-sm text-gray-500">We ensure secure payment with Razorpay</p>
         </div>
 
         <div className="hidden md:block h-10 w-px bg-textColor"></div>
@@ -27,8 +27,8 @@ const FeaturesSection = () => {
        
         <div className="flex flex-col items-center text-center space-y-2">
           <FaUndoAlt className="text-textColor text-3xl" />
-          <h3 className="text-lg font-semibold text-gray-800">7 Days Return</h3>
-          <p className="text-sm text-gray-500">Simply return it within 7 days for an exchange.</p>
+          <h3 className="text-lg font-semibold text-gray-800">17 Days Return</h3>
+          <p className="text-sm text-gray-500">Simply return it within 17 days for an exchange.</p>
         </div>
 
        

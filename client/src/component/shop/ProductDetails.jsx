@@ -51,10 +51,10 @@ const ProductDetails = () => {
   }, [id]);
   const fetchWishlist = async () => {
     try {
-      const wishlistResponse = await axiosInstance.get('/user/getwishlist');
-      setWishlistItems(wishlistResponse?.data?.data);
+        const wishlistResponse = await axiosInstance.get('/user/getwishlist');
+        setWishlistItems(wishlistResponse?.data?.data);
     } catch (error) {
-      console.error('Error fetching wishlist:', error);
+        console.error('Error fetching wishlist:', error);
     }
   };
   useEffect(() => {
@@ -148,29 +148,6 @@ const ProductDetails = () => {
     }
   };
 
-  // const handleShare = (platform) => {
-  //   let shareUrl = "";
-
-  //   switch (platform) {
-  //       case "facebook":
-  //           shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(currentUrl)}`;
-  //           break;
-  //       case "twitter":
-  //           shareUrl = `https://twitter.com/share?url=${encodeURIComponent(currentUrl)}&text=Check%20this%20out!`;
-  //           break;
-  //       case "whatsapp":
-  //           shareUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(currentUrl)}`;
-  //           break;
-  //       case "linkedin":
-  //           shareUrl = `https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(currentUrl)}`;
-  //           break;
-  //       default:
-  //           return;
-  //   }
-
-  //   window.open(shareUrl, "_blank", "noopener,noreferrer");
-  // };
-
   const handleShare = (platform) => {
     let shareUrl = "";
 
@@ -202,51 +179,25 @@ const ProductDetails = () => {
 
   return (
     <>
-      <div className="w-full p-6  lg:flex justify-center gap-3">
+      <div className="w-full p-6 lg:flex justify-center gap-3">
         {product && (
           <>
-            <div className="w-full lg:w-1/2 p-4  grid grid-cols-2 gap-3  lg:h-screen overflow-scroll productPhoto">
+            <div className="w-full lg:w-1/2 p-4 grid grid-cols-2 gap-3 lg:h-screen overflow-scroll productPhoto">
               {product?.image && product?.image?.map(val =>
                 <img
                   src={`${process.env.REACT_APP_API_BASE_URL}/uploads/${val}`}
                   alt={val}
-                  className="w-full h-auto object-cover rounded-md"
+                  className="w-full h-auto object-cover"
                 />
-                // <img src={men} alt="prod_Photo" height="" /> 
               )}
             </div>
-            <div className="w-full lg:w-1/2  ">
+            <div className="w-full lg:w-1/2">
               <div className="p-4 md:p-8 max-w-screen-lg mx-auto relative">
                 <div className="absolute top-0 right-0 lg:top-4 lg:right-4 flex gap-2">
-                  {/* <button
-                    className="w-5 h-5  lg:w-10 lg:h-10 rounded-sm border border-gray-300 flex items-center justify-center hover:bg-gray-200"
-                    aria-label="Share"
-                    onClick={(e) => {
-                      // Show sharing options (you can customize this)
-                      const options = prompt("Share on:\n1. Facebook\n2. Twitter\n3. WhatsApp\n4. LinkedIn\nSelect platform number:");
-                      if (options) {
-                          const platformMap = {
-                              "1": "facebook",
-                              "2": "twitter",
-                              "3": "whatsapp",
-                              "4": "linkedin",
-                          };
-                          const selectedPlatform = platformMap[options];
-                          if (selectedPlatform) {
-                              handleShare(selectedPlatform);
-                          } else {
-                              alert("Invalid selection");
-                          }
-                      }
-                  }}
-                  >
-                    <PiShareFatBold />
-                  </button> */}
-
                   <div>
                   {!showSelectBox ?
                    ( <button
-                      className="w-5 h-5 lg:w-10 lg:h-10 rounded-sm border border-gray-300 flex items-center justify-center hover:bg-gray-200"
+                      className="w-5 h-5 lg:w-10 lg:h-10 border border-gray-300 flex items-center justify-center hover:bg-gray-200"
                       aria-label="Share"
                       onClick={()=>setSelectBox(true)}
                     >
@@ -260,7 +211,7 @@ const ProductDetails = () => {
                         handleShare(platform);
                       }}
                       value={selectedOption}
-                      className="h-5  lg:h-10 rounded-sm border border-gray-300 flex items-center justify-center hover:bg-gray-200"
+                      className="h-5 lg:h-10 border border-gray-300 flex items-center justify-center hover:bg-gray-200"
                     >
                       <option value="">Share via...</option>
                       <option value="facebook">Facebook <FaFacebookF className="inline ml-2" /></option>
@@ -271,7 +222,7 @@ const ProductDetails = () => {
                     </select>)}
                   </div>  
                   <button
-                    className={`w-5 h-5  lg:w-10 lg:h-10  rounded-sm border border-gray-300 flex items-center justify-center hover:bg-gray-200 ${isInWishlist(product._id) ? 'text-red-500' : 'text-gray-400'}`}
+                    className={`w-5 h-5 lg:w-10 lg:h-10 border border-gray-300 flex items-center justify-center hover:bg-gray-200 ${isInWishlist(product._id) ? 'text-red-500' : 'text-gray-400'}`}
                     aria-label="Like"
                     onClick={() => toggleWishlist(product?._id)}>
                     <CiHeart />
@@ -279,7 +230,7 @@ const ProductDetails = () => {
                 </div>
 
                 <div>
-                  <h1 className=" text-lg lg:text-xl md:text-2xl font-bold">
+                  <h1 className="text-lg lg:text-xl md:text-2xl font-bold">
                     {product?.name}
                   </h1>
                   <p className="text-sm text-gray-500 mt-1">
@@ -300,9 +251,9 @@ const ProductDetails = () => {
                 <div className="mt-6">
                   {product?.sizes?.length > 0 &&
                     <>
-                      <p className="font-medium">
-                        SELECT SIZE & FIT
-                        <span className="text-textColor"> Last few left</span>
+                      <p className="font-medium text-lg mb-2">
+                        <span className="text-gray-800">Find Your Perfect Fit</span>
+                        <span className="text-red-500 font-semibold ml-2 animate-pulse">• Limited Stock Available</span>
                       </p>
                       <div className="flex gap-2 mt-2">
                         {product?.sizes.map((sizeObj, index) => (
@@ -310,7 +261,7 @@ const ProductDetails = () => {
                           <button
                             key={index}
                             onClick={() => handleSizeSelect(sizeObj.sizes, index)}
-                            className="border rounded-lg px-4 py-2 text-sm hover:border-black focus:border-black"
+                            className="border px-4 py-2 text-sm hover:border-black focus:border-black"
                           >
                             {sizeObj.sizes?.toUpperCase()}
                           </button>
@@ -328,15 +279,21 @@ const ProductDetails = () => {
                   }
                 </div>
 
-                <div className="mt-6 bg-red-100 text-red-600 text-center p-2 rounded-md">
+                {/* <div className="mt-6 bg-red-100 text-red-600 text-center p-2 rounded-md">
                   Subscribe for 15% off on your first purchase
-                </div>
+                </div> */}
 
                 <div className="mt-6 flex flex-col md:flex-row gap-4">
-                  <button className="w-full bg-black text-white py-2 rounded-md" onClick={() => handleAddToCartClick(product)}>
+                  <button 
+                    className="w-full bg-black text-white py-2 hover:bg-gray-800 transition-colors duration-200" 
+                    onClick={() => handleAddToCartClick(product)}
+                  >
                     ADD TO BAG
                   </button>
-                  <button onClick={handleCheckout} className="w-full border border-black text-black py-2 rounded-md">
+                  <button 
+                    onClick={handleCheckout} 
+                    className="w-full border border-black text-black py-2 hover:bg-black hover:text-white transition-colors duration-200"
+                  >
                     BUY IT NOW
                   </button>
                 </div>
@@ -361,7 +318,7 @@ const ProductDetails = () => {
           items={product?.variantProduct}
         />
       </div>
-      <div className="w-full p-6">
+      {/* <div className="w-full p-6">
         <p>Browse More</p>
         <div className="flex  gap-3 flex-wrap">
           {Browse.map((item) => (
@@ -373,7 +330,7 @@ const ProductDetails = () => {
             </button>
           ))}
         </div>
-      </div>
+      </div> */}
       {openModal && <Login openModal={openModal} setOpenModal={setOpenModal} />}
     </>
   );

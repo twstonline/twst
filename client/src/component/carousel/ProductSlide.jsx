@@ -31,7 +31,7 @@ const ProductSlide = ({ text, items, slider }) => {
   const navigate = useNavigate();
   
   return (
-    <div className="w-full overflow-hidden">
+    <div className="w-full overflow-hidden relative">
       <h1 key={text} className="text-2xl font-thin mb-6">{text}</h1>
       <Carousel 
         responsive={responsive}
@@ -40,12 +40,28 @@ const ProductSlide = ({ text, items, slider }) => {
         itemClass="carousel-item-padding-40-px"
         swipeable={true}
         draggable={true}
-        ssr={true} // server-side rendering
+        ssr={true}
         infinite={true}
         autoPlay={false}
         keyBoardControl={true}
         customTransition="transform 300ms ease-in-out"
         transitionDuration={300}
+        additionalTransfrom={0}
+        arrows
+        customLeftArrow={
+          <button className="absolute left-0 z-10 bg-white bg-opacity-75 p-2 rounded-full shadow-md hover:bg-opacity-100 transition-all">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+        }
+        customRightArrow={
+          <button className="absolute right-0 z-10 bg-white bg-opacity-75 p-2 rounded-full shadow-md hover:bg-opacity-100 transition-all">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+        }
       >
         {slider === "Categories" &&
           (items &&

@@ -73,8 +73,8 @@ const MobilNav = () => {
 
   return (
     <>
-      <Drawer open={openNav} onClose={() => dispatch(openMobileNav())} position="right" className="w-full">
-        <div className="flex justify-end p-4">
+      <Drawer open={openNav} onClose={() => dispatch(openMobileNav())} position="right" className="w-full max-w-[300px] z-[1001]">
+        <div className="flex justify-end p-4 fixed top-0 right-0 z-[1002] bg-white w-full max-w-[300px]">
           <button 
             onClick={() => dispatch(openMobileNav())}
             className="text-gray-500 hover:text-gray-700"
@@ -83,7 +83,7 @@ const MobilNav = () => {
           </button>
         </div>
         
-        <Drawer.Items className="w-full">
+        <Drawer.Items className="w-full mt-12 max-w-[300px] z-[1001]">
           <Sidebar
             aria-label="Sidebar with multi-level dropdown example"
             className="[&>div]:bg-transparent [&>div]:p-0 w-full"
@@ -107,29 +107,33 @@ const MobilNav = () => {
                         Contact
                       </Sidebar.Item>
                     </Link>
-                    {userData ? (
+                    {userData && (
                       <Link to="/profile/dashboard" className="w-full">
                         <Sidebar.Item icon={FaRegUser} className="mt-1 w-full" onClick={() => dispatch(openMobileNav())}>
                           Profile
                         </Sidebar.Item>
                       </Link>
-                    ) : (
+                    )}
+                    {cartData > 0 && <span className="absolute top-6 left-5 bg-[#FF5722] text-white text-xs py-[0.1em] px-[0.5em] rounded-full">{cartData}</span>}
+                    <Sidebar.Item icon={IoCartOutline} onClick={handleCart} className="w-full relative">
+                      Cart
+                    </Sidebar.Item>
+                    {wishlistData > 0 && <span className="absolute top-6 left-5 bg-[#FF5722] text-white text-xs py-[0.1em] px-[0.5em] rounded-full">{wishlistData}</span>}
+                    <Sidebar.Item icon={IoHeartOutline} onClick={handleWishlist} className="w-full relative">
+                      Wishlist
+                    </Sidebar.Item>
+                    {!userData && (
                       <Sidebar.Item 
                         icon={CiLogin} 
-                        onClick={() => setOpenModal(true)}
+                        onClick={() => {
+                          setOpenModal(true);
+                          dispatch(openMobileNav());
+                        }}
                         className="w-full"
                       >
                         Login
                       </Sidebar.Item>
                     )}
-                    {cartData > 0 && <span className="relative top-6 left-5 bg-[#FF5722] text-white text-xs py-[0.1em] px-[0.5em] rounded-full">{cartData}</span>}
-                    <Sidebar.Item icon={IoCartOutline} onClick={handleCart} className="w-full">
-                      Cart
-                    </Sidebar.Item>
-                    {wishlistData > 0 && <span className="relative top-6 left-5 bg-[#FF5722] text-white text-xs py-[0.1em] px-[0.5em] rounded-full">{wishlistData}</span>}
-                    <Sidebar.Item icon={IoHeartOutline} onClick={handleWishlist} className="w-full">
-                      Wishlist
-                    </Sidebar.Item>
                   </Sidebar.ItemGroup>
                 </Sidebar.Items>
               </div>
@@ -137,7 +141,11 @@ const MobilNav = () => {
           </Sidebar>
         </Drawer.Items>
       </Drawer>
-      {openModal && <Login openModal={openModal} setOpenModal={setOpenModal} />}
+      {openModal && (
+        <div className="fixed inset-0 z-[1006]">
+          <Login openModal={openModal} setOpenModal={setOpenModal} />
+        </div>
+      )}
     </>
   );
 }

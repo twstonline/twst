@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Layout from "./layout/Layout";
 import Home from "./page/Home";
@@ -18,6 +18,7 @@ import CustomToaster from "./utils/constant/CustomToaster";
 import Wishlist from "./page/Wishlist";
 import Checkout from "./page/Checkout";
 import ScrollToTop from "./ScrollToTop";
+import { Preloader } from './component/common/Preloader';
 
 import CancellationRefunds from "./component/policies/CancellationRefunds";
 import PrivacyPolicy from "./component/policies/PrivacyPolicy";
@@ -27,8 +28,22 @@ import TermsOfService from "./component/policies/TermsOfServicce";
 
 
 const App = () => {
-  return (
+  const [loading, setLoading] = useState(true);
 
+  useEffect(() => {
+    // Simulate loading
+    setTimeout(() => setLoading(false), 1000);
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="fixed inset-0 flex items-center justify-center bg-white z-50">
+        <Preloader />
+      </div>
+    );
+  }
+
+  return (
     <Router>
       <ScrollToTop />
       <Routes>

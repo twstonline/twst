@@ -25,16 +25,18 @@ import { Outlet } from "react-router-dom";
 
 const Layout = () => {
   return (
-    <>
-      <NavigationBar />
-      <main>
+    <div className="min-h-screen flex flex-col">
+      <div className="fixed top-0 left-0 w-full z-[1000]">
+        <NavigationBar />
+      </div>
+      <main className="flex-grow pt-16"> {/* pt-16 accounts for navbar height */}
         <Outlet />
       </main>
       <footer>
         <FeaturesSection />
         <Footer />
       </footer>
-    </>
+    </div>
   );
 };
 
