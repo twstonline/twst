@@ -76,7 +76,7 @@ const NavigationBar = () => {
 
   return (
     <>
-      <nav className={`w-full fixed top-0 z-[1000] bg-white shadow-sm`}>
+      <nav className={`w-full fixed top-0 z-[1000] bg-white/80 backdrop-blur-sm shadow-sm`}>
         <div className="px-4 sm:px-6 py-3 flex items-center justify-between max-w-7xl mx-auto">
           <div className="hidden md:block">
             <ul className="flex gap-4 cursor-pointer text-black">
