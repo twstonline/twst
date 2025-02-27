@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { Carousel } from "flowbite-react";
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 import axiosInstance from "../../axios"
+import { useNavigate } from "react-router-dom";
 
 const ImageSlider = () => {
   const [banners, setBanners] = useState([{}]);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const navigate = useNavigate();
 
   const fetchBanners = async () => {
     try {
@@ -18,53 +21,56 @@ const ImageSlider = () => {
     fetchBanners();
   }, []);
 
+  const handlePrev = () => {
+    setCurrentIndex((prev) => (prev === 0 ? banners.length - 1 : prev - 1));
+  };
+
+  const handleNext = () => {
+    setCurrentIndex((prev) => (prev === banners.length - 1 ? 0 : prev + 1));
+  };
+
+  const handleShopNow = () => {
+    navigate('/shop');
+  };
+
+  const currentBanner = banners[currentIndex] || {};
+
   return (
-    <div className="h-96 sm:h-[600px] xl:h-[700px] 2xl:h-[800px] relative group">
-      <Carousel 
-        leftControl={
-          <span className="p-3 bg-white/30 backdrop-blur-sm rounded-full shadow-xl hover:bg-white/50 transition-all duration-300">
-            <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7"/>
-            </svg>
-          </span>
-        }
-        rightControl={
-          <span className="p-3 bg-white/30 backdrop-blur-sm rounded-full shadow-xl hover:bg-white/50 transition-all duration-300">
-            <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"/>
-            </svg>
-          </span>
-        }
+    <div className="relative w-full h-[80vh] sm:h-screen bg-neutral-800 overflow-hidden">
+      {/* Background image */}
+      <div className="absolute inset-0">
+        <img 
+          src={banners.length ? `${process.env.REACT_APP_API_BASE_URL}/uploads/${currentBanner?.src}` : "https://flowbite.com/docs/images/carousel/carousel-1.svg"}
+          alt={currentBanner?.title || "Fallback banner"}
+          className="w-full h-full object-cover opacity-90"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent"></div>
+      </div>
+
+      {/* Shop Now Button */}
+     <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full text-center md:top-auto md:left-auto md:right-8 md:bottom-8 md:transform-none">
+        <button 
+          onClick={handleShopNow}
+          className="border border-white px-8 py-3 text-sm uppercase tracking-wide text-white hover:bg-white hover:text-amber-500 transition-colors duration-300 ease-in-out"
+        >
+          Shop Now
+        </button>
+      </div>
+
+      {/* Navigation arrows */}
+      <button 
+        onClick={handlePrev}
+        className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white bg-opacity-30 rounded-full flex items-center justify-center hover:bg-opacity-50 transition-all"
       >
-        {banners.length ? (
-          banners?.map((item, i) => (
-            <div key={i} className="relative h-full w-full">
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent"></div>
-              <img 
-                src={`${process.env.REACT_APP_API_BASE_URL}/uploads/${item?.src}`} 
-                alt={item?.title}
-                className="w-full h-full object-cover object-center"
-              />
-              <div className="absolute bottom-20 left-10 text-white max-w-2xl space-y-6">
-                <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold font-manrope tracking-tight">
-                  {item?.title}
-                </h2>
-                <p className="text-lg md:text-xl lg:text-2xl font-light opacity-90">
-                  {item?.description}
-                </p>
-              </div>
-            </div>
-          ))
-        ) : (
-          <div className="relative h-full w-full bg-gray-100 flex items-center justify-center rounded-xl shadow-xl">
-            <img 
-              src="https://flowbite.com/docs/images/carousel/carousel-1.svg" 
-              alt="Fallback banner" 
-              className="w-1/2 opacity-50"
-            />
-          </div>
-        )}
-      </Carousel>
+        <ChevronLeft className="text-white" />
+      </button>
+      
+      <button 
+        onClick={handleNext}
+        className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white bg-opacity-30 rounded-full flex items-center justify-center hover:bg-opacity-50 transition-all"
+      >
+        <ChevronRight className="text-white" />
+      </button>
     </div>
   );
 }

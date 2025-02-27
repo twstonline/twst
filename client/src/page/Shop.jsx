@@ -95,7 +95,6 @@ const Shop = () => {
 };
 
 export default Shop;
-
 // import React from "react";
 // import Filter from "../component/shop/Filter";
 // import ProductList from "../component/shop/ProductList";
@@ -283,3 +282,4 @@ export default Shop;
 // export default ProductSlide;
 // this is my ProductSlide.jsx.
 // how to list shop page products in proper type . it means proper pagination . ProductSlide page category select time shop page redirect and shop page show that category related product . any product selected time show that product related ProductDetails page . include filters .
+

@@ -45,7 +45,7 @@ const Summary = ({ salePriceTotal, deliveryCharge, proPriceTotal,lastTotal }) =>
     navigate('/checkout')
   }
   return (
-    <div className="w-full lg:w-1/3 p-6 rounded-lg mt-6 shadow-md lg:mt-0 lg:h-[calc(100vh-100px)]">
+    <div className="w-full lg:w-1/3 p-6 mt-6 shadow-md lg:mt-0 lg:h-[calc(100vh-100px)]">
       <h2 className="text-2xl font-bold mb-6">Summary</h2>
       <div className="flex justify-between mb-4">
         <p className="text-gray-600">Product Total</p>
@@ -65,7 +65,7 @@ const Summary = ({ salePriceTotal, deliveryCharge, proPriceTotal,lastTotal }) =>
         <p>Total</p>
         <p>₹ {lastTotal}</p>
       </div>
-      <button className="w-full mt-6 bg-black text-white py-3 rounded-lg hover:bg-gray-800" onClick={handleCheckout}>
+      <button className="w-full mt-6 bg-yellow-400 bg-opacity-20 backdrop-blur-sm py-3 shadow-md text-yellow-800 hover:bg-yellow-500 hover:text-white transition-colors font-semibold" onClick={handleCheckout}>
         PROCEED TO CHECKOUT
       </button>
       <p className="mt-4 text-center text-gray-500 text-sm">

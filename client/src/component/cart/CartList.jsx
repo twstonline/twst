@@ -51,20 +51,20 @@ const CartList = ({ cartData, onQuantityChange, onRemoveItem }) => {
   return (
     <>
       {cartData?.map((item, index) => (
-        <div key={item?._id} className="flex flex-col md:flex-row items-center md:items-start justify-between border-b pb-6 mb-6">
+        <div key={item?._id} className="flex flex-col md:flex-row items-center md:items-start justify-between pb-6 mb-6">
           <div className="flex items-center gap-6">
             <img
               src={`${process.env.REACT_APP_API_BASE_URL}/uploads/${item?.productId?.image?.[0]}`}
               alt="Product"
               width={100}
               height={100}
-              className="w-28 h-28 object-cover rounded-lg shadow-sm"
+              className="w-28 h-28 object-cover"
             />
             <div>
               <h3 className="text-xl font-medium text-gray-800">{item?.productId?.name}</h3>
               {item?.size && <p className="text-gray-500 mt-1">Size: {item.size}</p>}
               <button
-                className="mt-2 text-red-500 hover:underline font-medium"
+                className="mt-6 bg-zinc-400 bg-opacity-20 backdrop-blur-sm px-1 py-2 md:px-6 md:py-3 shadow-md text-red-500 hover:bg-red-500 hover:text-white transition-colors"
                 onClick={() => onRemoveItem(item)}
               >
                 REMOVE
@@ -72,9 +72,9 @@ const CartList = ({ cartData, onQuantityChange, onRemoveItem }) => {
             </div>
           </div>
           <div className="mt-4 md:mt-0 flex items-center gap-6">
-            <div className="flex items-center border rounded-md overflow-hidden">
+            <div className="flex items-center">
               <button
-                className="px-4 py-2 bg-gray-100 text-gray-600 hover:bg-gray-200"
+                className="px-4 py-2 bg-zinc-400 bg-opacity-20 backdrop-blur-sm shadow-md text-gray-600 hover:bg-gray-500 hover:text-white"
                 onClick={() => onQuantityChange(item, "decrement", index)}
                 disabled={item?.qty === 1}
               >
@@ -82,14 +82,14 @@ const CartList = ({ cartData, onQuantityChange, onRemoveItem }) => {
               </button>
               <span className="px-6 py-2 bg-white text-gray-800">{item?.qty}</span>
               <button
-                className="px-4 py-2 bg-gray-100 text-gray-600 hover:bg-gray-200"
+                className="px-4 py-2 bg-zinc-400 bg-opacity-20 backdrop-blur-sm shadow-md text-gray-600 hover:bg-gray-500 hover:text-white"
                 onClick={() => onQuantityChange(item, "increment", index)}
               >
                 +
               </button>
             </div>
             <p className="text-lg font-semibold text-gray-800">₹ {item?.productId?.sale_rate}
-              <span className=" font-light text-gray-500 text-sm line-through mx-3">
+              <span className="font-light text-gray-500 text-sm line-through mx-3">
                 ₹{item?.productId?.price}
               </span>
             </p>

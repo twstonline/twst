@@ -259,14 +259,13 @@
 import React, { useState } from "react";
 import { Button, Modal } from "flowbite-react";
 import fashion from "../../asset/fashion.png";
-import { FaGoogle, FaApple, FaFacebookF } from "react-icons/fa";
 import { toast } from "react-hot-toast";
 import axiosInstance from '../../axios';
 import { useDispatch } from "react-redux";
 import { setUserDetails } from '../../redux/actions/userActions.js';
-
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
+import { FaWhatsapp } from "react-icons/fa";
 
 const Login = ({ openModal, setOpenModal }) => {
     const dispatch = useDispatch()
@@ -316,7 +315,6 @@ const Login = ({ openModal, setOpenModal }) => {
             dispatch(setUserDetails(response.data.data));
             toast.success("Login successful!");
             setOpenModal(false);
-            // window.location.reload();
         } catch (error) {
             console.error(error);
             toast.error("Invalid OTP. Please try again.");
@@ -329,103 +327,77 @@ const Login = ({ openModal, setOpenModal }) => {
                 dismissible
                 show={openModal}
                 onClose={() => setOpenModal(false)}
-                size="xxl"
-                className="backdrop-blur-sm"
+                size="md"
+                className="backdrop-blur-sm fixed inset-0 flex items-center justify-center"
             >
-                <Modal.Body className="w-full p-0 relative overflow-hidden">
-                    <div
-                        className="absolute inset-0 w-full h-full"
-                        style={{
-                            backgroundImage: `url(${fashion})`,
-                            backgroundSize: "cover",
-                            backgroundPosition: "center",
-                        }}
-                    />
-                    <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 h-full gap-8">
-                        <div className="bg-white/30 backdrop-blur-lg p-6 md:p-12 h-full flex flex-col justify-center">
-                            <h2 className="text-2xl font-bold mb-4">Shop</h2>
-                            <ul>
-                                <li className="mb-2">New Arrivals</li>
-                                <li className="mb-2">Winters</li>
-                                <li className="mb-2">Women's</li>
-                                <li>Men's</li>
-                            </ul>
+                <Modal.Body className="w-full p-6 bg-yellow-50">
+                    <div className="flex flex-col items-center space-y-6">
+                        <div className="bg-yellow-100 p-4 rounded-full">
+                            <FaWhatsapp className="text-yellow-600 text-3xl" />
                         </div>
+                        
+                        <h3 className="text-xl font-semibold text-center text-yellow-800">
+                            {showOtpInput ? "Verify OTP" : "Login with WhatsApp"}
+                        </h3>
 
-                        <div className="bg-white/30 backdrop-blur-lg p-6 md:p-12 h-full flex flex-col justify-center items-center">
-                            <h3 className="mb-6 text-xl font-medium text-gray-900 dark:text-white">LOGIN/SIGNUP</h3>
-                            {!showOtpInput ? (
-                                // <>
-                                //     <input
-                                //         type="tel"
-                                //         className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 my-5"
-                                //         placeholder="Enter WhatsApp Number"
-                                //         value={phoneNumber}
-                                //         onChange={(e) => setPhoneNumber(e.target.value)}
-                                //     />
-                                //     <Button
-                                //         color="blue"
-                                //         onClick={handleContinue}
-                                //         className="w-full max-w-md mb-4"
-                                //     >
-                                //         Continue
-                                //     </Button>
-                                // </>
-                                <>
-                            <PhoneInput
-                                international
-                                defaultCountry="IN"
-                                value={phoneNumber}
-                                onChange={setPhoneNumber}
-                                className="w-full max-w-md bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg p-2.5"
-                            />
-                            <Button color="blue" onClick={handleContinue} className="w-full max-w-md mt-4">
-                                Continue
-                            </Button>
-                        </>
-                            ) : (
-                                <>
-                                    <p className="mb-4">Enter OTP sent to {phoneNumber}</p>
-                                    <div className="flex mb-6 space-x-2">
+                        {!showOtpInput ? (
+                            <>
+                                <div className="w-full space-y-4">
+                                    <p className="text-sm text-yellow-700 text-center">
+                                        Enter your WhatsApp number to receive OTP
+                                    </p>
+                                    <PhoneInput
+                                        international
+                                        defaultCountry="IN"
+                                        value={phoneNumber}
+                                        onChange={setPhoneNumber}
+                                        className="w-full bg-yellow-50 border border-yellow-300 text-yellow-900 text-sm rounded-lg p-2.5 focus:ring-yellow-500 focus:border-yellow-500"
+                                    />
+                                    <button 
+                                        onClick={handleContinue} 
+                                        className="mt-6 bg-yellow-400 bg-opacity-20 backdrop-blur-sm px-6 py-3 rounded-md shadow-md w-full text-yellow-800 hover:bg-yellow-500 hover:text-white transition-colors"
+                                    >
+                                        Send OTP via WhatsApp
+                                    </button>
+                                </div>
+                            </>
+                        ) : (
+                            <>
+                                <div className="w-full space-y-4">
+                                    <p className="text-sm text-yellow-700 text-center">
+                                        We've sent a 6-digit OTP to your WhatsApp number {phoneNumber}
+                                    </p>
+                                    <div className="flex justify-center space-x-2">
                                         {otp.map((digit, index) => (
                                             <input
                                                 key={index}
                                                 id={`otp-input-${index}`}
                                                 type="text"
                                                 maxLength="1"
-                                                className="w-10 h-10 border border-gray-300 rounded text-center mx-1 focus:ring-blue-500 focus:border-blue-500"
+                                                className="w-10 h-10 border border-yellow-300 rounded text-center focus:ring-yellow-500 focus:border-yellow-500 bg-yellow-50"
                                                 value={digit}
                                                 onChange={(e) => handleOtpChange(e.target.value, index)}
                                                 onFocus={(e) => e.target.select()} 
                                             />
                                         ))}
                                     </div>
-                                    <Button
-                                        color="blue"
+                                    <button
                                         onClick={handleOtpSubmit}
-                                        className="w-full max-w-md"
+                                        className="mt-6 bg-yellow-400 bg-opacity-20 backdrop-blur-sm px-6 py-3 rounded-md shadow-md w-full text-yellow-800 hover:bg-yellow-500 hover:text-white transition-colors"
                                     >
-                                        Submit OTP
-                                    </Button>
-                                </>
-                            )}
-                            <p className="mt-6 text-sm text-gray-500 dark:text-gray-400">OR</p>
-                            <div className="flex space-x-4 mt-4">
-                                <Button color="gray" className="w-12 h-12 rounded-full flex items-center justify-center">
-                                    <FaGoogle />
-                                </Button>
-                                <Button color="gray" className="w-12 h-12 rounded-full flex items-center justify-center">
-                                    <FaApple />
-                                </Button>
-                                <Button color="gray" className="w-12 h-12 rounded-full flex items-center justify-center">
-                                    <FaFacebookF />
-                                </Button>
-                            </div>
-                            {/* <p className="mt-6 text-sm text-gray-500 dark:text-gray-400">
-                                Don't have an account?
-                                <a href="/" className="text-blue-600 dark:text-blue-500 hover:underline"> Register Now</a>
-                            </p> */}
-                        </div>
+                                        Verify OTP
+                                    </button>
+                                    <p className="text-sm text-yellow-600 text-center">
+                                        Didn't receive OTP? <button 
+                                            onClick={handleContinue}
+                                            className="text-yellow-700 hover:underline"
+                                        >
+                                            Resend
+                                        </button>
+                                    </p>
+                                </div>
+                            </>
+                        )}
                     </div>
                 </Modal.Body>
             </Modal>

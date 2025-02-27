@@ -13,7 +13,7 @@ async function server() {
         useNewUrlParser: true,
         useUnifiedTopology: true      
       }
-    )
+    ) 
     connection.on('connected', () => {
       console.log('Connected to MongoDB');           
     });
