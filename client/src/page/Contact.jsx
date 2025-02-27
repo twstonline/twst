@@ -28,9 +28,9 @@ const Contact = () => {
                   <MapPin size={18} className="text-white" />
                 </div>
                 <div className="text-sm">
-                  <p className="font-medium">Impulse Corporate Tower</p>
-                  <p className="text-gray-600">Plot No. 41, Echelon Institutional Area</p>
-                  <p className="text-gray-600">Sector 32, Gurgaon - 122001, Haryana, India</p>
+                  <p className="font-medium">Bijisadan</p>
+                  <p className="text-gray-600">North Pipeline, HMT Colony P.O</p>
+                  <p className="text-gray-600">Ernakulam District - 683503, Kerala, India</p>
                 </div>
               </div>
               
@@ -39,17 +39,7 @@ const Contact = () => {
                   <Phone size={18} className="text-white" />
                 </div>
                 <div className="text-sm">
-                  <p className="font-medium">+91 955 526 32 63</p>
-                  <p className="text-gray-600">(Mon - Fri, 10:00-6:30 IST)</p>
-                </div>
-              </div>
-              
-              <div className="flex items-start">
-                <div className="bg-black rounded-full p-2 mr-4">
-                  <Phone size={18} className="text-white" />
-                </div>
-                <div className="text-sm">
-                  <p className="font-medium">+91 987 399 95 94</p>
+                  <p className="font-medium">+91 807 882 5243</p>
                   <p className="text-gray-600">(Mon - Fri, 10:00-6:30 IST)</p>
                 </div>
               </div>
@@ -59,7 +49,7 @@ const Contact = () => {
                   <Mail size={18} className="text-white" />
                 </div>
                 <div className="text-sm">
-                  <p className="font-medium">contact@andamen.com</p>
+                  <p className="font-medium">contact.twst@gmail.com</p>
                   <p className="text-gray-600">(Typical response time: 24 hours)</p>
                 </div>
               </div>

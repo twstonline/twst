@@ -4,81 +4,76 @@ import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-900 text-gray-400 py-10">
-      <div className="container mx-auto px-5 md:px-10 lg:px-20">
-        <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-4 gap-10">
-          {/* Need Help Section */}
-          <div className="space-y-4">
-            <h3 className="text-white text-lg font-semibold">Need Help?</h3>
-            <p className="flex items-center space-x-2">
-              <FaWhatsapp className="text-gray-500" />
-              <span>WhatsApp Us</span>
-            </p>
-            <p className="flex items-center space-x-2">
-              <FaPhone className="text-gray-500" />
-              <span>Call Us</span>
-            </p>
-            <p className="flex items-center space-x-2">
-              <FaEnvelope className="text-gray-500" />
-              <span>Email Us</span>
-            </p>
-            <p className="text-sm">Mon-Fri: 10am-6pm</p>
-            <div className="flex space-x-4">
-              <FaFacebook className="text-gray-500 hover:text-white transition" />
-              <FaInstagram className="text-gray-500 hover:text-white transition" />
-              <FaLinkedin className="text-gray-500 hover:text-white transition" />
+    <footer className="bg-gray-900 text-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
+          {/* Contact Section */}
+          <div className="space-y-6">
+            <h3 className="text-lg font-bold uppercase tracking-wider">Contact Us</h3>
+            <div className="space-y-4">
+              <div className="flex items-center space-x-3">
+                <FaWhatsapp className="w-5 h-5 text-gray-400" />
+                <span>+91 807 882 5243</span>
+              </div>
+              <div className="flex items-center space-x-3">
+                <FaPhone className="w-5 h-5 text-gray-400" />
+                <span>+91 807 882 5243</span>
+              </div>
+              <div className="flex items-center space-x-3">
+                <FaEnvelope className="w-5 h-5 text-gray-400" />
+                <span>contact.twst@gmail.com</span>
+              </div>
+            </div>
+            <div className="text-sm text-gray-400">
+              Bijisadan, North Pipeline, HMT Colony P.O,<br />
+              Ernakulam District - 683503, Kerala, India
             </div>
           </div>
 
-          {/* Shop Section */}
-          <div className="space-y-2">
-            <h3 className="text-white text-lg font-semibold">Shop</h3>
-            <ul className="space-y-1">
-              <li>New Dawn Sale</li>
-              <li>Shirts</li>
-              <li>Polos</li>
-              <li>Crew Necks</li>
-              <li>Winterwear</li>
-              <li>Ethnicwear</li>
-              <li>Pure Denim</li>
+          {/* Quick Links Section */}
+          <div className="space-y-6">
+            <h3 className="text-lg font-bold uppercase tracking-wider">Quick Links</h3>
+            <ul className="space-y-3">
+              <li><Link to="/shop" className="text-gray-400 hover:text-white transition">Shop</Link></li>
+              <li><Link to="/about" className="text-gray-400 hover:text-white transition">About Us</Link></li>
+              <li><Link to="/contact" className="text-gray-400 hover:text-white transition">Contact</Link></li>
+              <li><Link to="/profile" className="text-gray-400 hover:text-white transition">My Account</Link></li>
             </ul>
           </div>
 
-          {/* Info Section */}
-          <div className="space-y-2">
-            <h3 className="text-white text-lg font-semibold">Info</h3>
-            <ul className="space-y-1">
-            <li><Link to={'/privacypolicy'}>Privacy Policy</Link></li>
-              <li><Link to={'/cancellation'}>Cancellation & Refunds</Link></li>
-              <li><Link to={'/returnpolicy'}>Return Policy</Link></li>
-              <li><Link to={'/storepolicy'}>Store Policies</Link></li>
-              <li><Link to={'/termsofservice'}>Terms of Service</Link></li>
+          {/* Policies Section */}
+          <div className="space-y-6">
+            <h3 className="text-lg font-bold uppercase tracking-wider">Policies</h3>
+            <ul className="space-y-3">
+              <li><Link to="/privacypolicy" className="text-gray-400 hover:text-white transition">Privacy Policy</Link></li>
+              <li><Link to="/cancellation" className="text-gray-400 hover:text-white transition">Cancellation & Refunds</Link></li>
+              <li><Link to="/returnpolicy" className="text-gray-400 hover:text-white transition">Return Policy</Link></li>
+              <li><Link to="/storepolicy" className="text-gray-400 hover:text-white transition">Store Policies</Link></li>
+              <li><Link to="/termsofservice" className="text-gray-400 hover:text-white transition">Terms of Service</Link></li>
             </ul>
           </div>
-          
 
-         
-
-          {/* Subscription Section */}
-          <div className="space-y-4">
-            <h3 className="text-white text-lg font-semibold">Sign up & Save 15% on your first order</h3>
-            <p className="text-sm">
-              We’ll send you updates on new launches, products, and events, only good stuff.
-            </p>
-            <form className="flex">
-              <input
-                type="email"
-                placeholder="Email"
-                className="bg-gray-800 text-white p-3 rounded-l-md outline-none flex-grow"
-              />
-              <button className="bg-yellow-500 text-white px-5 rounded-r-md">
-                →
-              </button>
-            </form>
+          {/* Social Media Section */}
+          <div className="space-y-6">
+            <h3 className="text-lg font-bold uppercase tracking-wider">Follow Us</h3>
+            <div className="flex space-x-6">
+              <a href="#" className="text-gray-400 hover:text-white transition">
+                <FaFacebook className="w-6 h-6" />
+              </a>
+              <a href="#" className="text-gray-400 hover:text-white transition">
+                <FaInstagram className="w-6 h-6" />
+              </a>
+              <a href="#" className="text-gray-400 hover:text-white transition">
+                <FaLinkedin className="w-6 h-6" />
+              </a>
+            </div>
           </div>
         </div>
-        <div className="border-t border-gray-700 mt-10 pt-5 text-center text-sm">
-          © 2024, Andamen - All rights reserved.
+
+        {/* Copyright Section */}
+        <div className="border-t border-gray-800 mt-12 pt-8 text-center text-sm text-gray-400">
+          © {new Date().getFullYear()} TWST. All rights reserved. | 
+          Designed by <a href="https://www.acmeflare.in" target="_blank" rel="noopener noreferrer" className="hover:text-white transition">acmeflare</a>
         </div>
       </div>
     </footer>

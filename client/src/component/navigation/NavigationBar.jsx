@@ -77,7 +77,7 @@ const NavigationBar = () => {
   return (
     <>
       <nav className={`w-full fixed top-0 z-[1000] bg-white/80 backdrop-blur-sm shadow-sm`}>
-        <div className="px-4 sm:px-6 py-3 flex items-center justify-between max-w-7xl mx-auto">
+        <div className="px-6 py-4 w-full flex items-center justify-between">
           <div className="hidden md:block">
             <ul className="flex gap-4 cursor-pointer text-black">
               <li><Link to="/shop">Shop</Link></li>
@@ -86,9 +86,9 @@ const NavigationBar = () => {
             </ul>
           </div>
 
-          <div className="scale-100">
+          <div className="scale-150">
             <Link to="/">
-              <img src={twst} alt="TWST" width="60px" className="cursor-pointer" />
+              <img src={twst} alt="TWST" width="50px" className="cursor-pointer" />
             </Link>
           </div>
 
